@@ -1,13 +1,26 @@
 import React from "react";
 import SocialLogin from "../Login/SocialLogin";
+import { useForm } from "react-hook-form";
 
 const Register = () => {
+	const {
+		register,
+		formState: { errors },
+		handleSubmit,
+	} = useForm();
+
+	const onSubmit = (data, e) => {
+		e.preventDefault();
+		console.log(data);
+	};
+
 	return (
 		<section className="my-12">
 			<div className="container mx-auto">
 				<div className="flex justify-center items-center">
 					<div className="w-[400px]">
 						<form
+							onSubmit={handleSubmit(onSubmit)}
 							action=""
 							className="border bg-slate-100 p-5 rounded-md shadow-sm"
 						>
@@ -20,9 +33,19 @@ const Register = () => {
 									type="text"
 									placeholder="Name"
 									className="input input-bordered w-full"
+									{...register("name", {
+										required: {
+											value: true,
+											message: "Name is required.",
+										},
+									})}
 								/>
 								<label className="label">
-									<span className="label-text-alt">Alt label</span>
+									{errors.name?.type === "required" && (
+										<span className="label-text-alt text-red-500">
+											{errors.name.message}
+										</span>
+									)}
 								</label>
 							</div>
 							<div className="form-control w-full">
@@ -33,9 +56,28 @@ const Register = () => {
 									type="email"
 									placeholder="Email Address"
 									className="input input-bordered w-full"
+									{...register("email", {
+										required: {
+											value: true,
+											message: "Email Address is required.",
+										},
+										pattern: {
+											value: /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/,
+											message: "Provide a valid email",
+										},
+									})}
 								/>
 								<label className="label">
-									<span className="label-text-alt">Alt label</span>
+									{errors.email?.type === "required" && (
+										<span className="label-text-alt text-red-500">
+											{errors.email.message}
+										</span>
+									)}
+									{errors.email?.type === "pattern" && (
+										<span className="label-text-alt text-red-500">
+											{errors.email.message}
+										</span>
+									)}
 								</label>
 							</div>
 							<div className="form-control w-full">
@@ -46,9 +88,28 @@ const Register = () => {
 									type="password"
 									placeholder="Password"
 									className="input input-bordered w-full"
+									{...register("password", {
+										required: {
+											value: true,
+											message: "Password is required.",
+										},
+										minLength: {
+											value: 6,
+											message: "Password will be character and more",
+										},
+									})}
 								/>
 								<label className="label">
-									<span className="label-text-alt">Alt label</span>
+									{errors.password?.type === "required" && (
+										<span className="label-text-alt text-red-500">
+											{errors.password.message}
+										</span>
+									)}
+									{errors.password?.type === "minLength" && (
+										<span className="label-text-alt text-red-500">
+											{errors.password.message}
+										</span>
+									)}
 								</label>
 							</div>
 							<div className="form-control w-full">
@@ -59,9 +120,28 @@ const Register = () => {
 									type="password"
 									placeholder="Comfirm Password"
 									className="input input-bordered w-full"
+									{...register("confirmPassword", {
+										required: {
+											value: true,
+											message: "Confirm Password is required.",
+										},
+										minLength: {
+											value: 6,
+											message: "Password will be character and more",
+										},
+									})}
 								/>
 								<label className="label">
-									<span className="label-text-alt">Alt label</span>
+									{errors.confirmPassword?.type === "required" && (
+										<span className="label-text-alt text-red-500">
+											{errors.confirmPassword.message}
+										</span>
+									)}
+									{errors.confirmPassword?.type === "minLength" && (
+										<span className="label-text-alt text-red-500">
+											{errors.confirmPassword.message}
+										</span>
+									)}
 								</label>
 							</div>
 							{/* trams and condition */}
