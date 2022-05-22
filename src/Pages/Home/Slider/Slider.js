@@ -1,7 +1,7 @@
 import React from "react";
-import tools1 from "../../../Images/tools-1.jpg";
-import tools2 from "../../../Images/tools-2.jpg";
-import tools3 from "../../../Images/tools-3.jpg";
+import tools1 from "../../../Images/banner/tools-1.jpg";
+import tools2 from "../../../Images/banner/tools-2.jpg";
+import tools3 from "../../../Images/banner/tools-3.jpg";
 
 const Slider = () => {
 	return (
