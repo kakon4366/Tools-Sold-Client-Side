@@ -9,16 +9,16 @@ const BusinessSummary = () => {
 				<SectionTitle>Business Summary</SectionTitle>
 
 				<div
-					class="hero min-h-[500px] mt-12"
+					className="hero min-h-[500px] mt-12"
 					style={{ backgroundImage: `url(${bgImg})` }}
 				>
-					<div class="hero-overlay bg-opacity-60"></div>
-					<div class="hero-content text-center text-neutral-content">
-						<div class="md:w-3/4 w-sull">
-							<h1 class="mb-5 sm:text-5xl text-3xl font-bold">
+					<div className="hero-overlay bg-opacity-60 bg-accent"></div>
+					<div className="hero-content text-center text-neutral-content">
+						<div className="md:w-3/4 w-sull text-white">
+							<h1 className="mb-5 sm:text-5xl text-3xl font-bold">
 								What is our Business?
 							</h1>
-							<p class="mb-5">
+							<p className="mb-5 text-slate-300">
 								Lorem ipsum dolor sit amet consectetur adipisicing elit.
 								Dolorem nostrum, porro possimus obcaecati quam
 								dignissimos nihil odit ipsa laboriosam ratione corporis?
