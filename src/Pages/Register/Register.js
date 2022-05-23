@@ -1,17 +1,47 @@
-import React from "react";
+import React, { useState } from "react";
 import SocialLogin from "../Login/SocialLogin";
 import { useForm } from "react-hook-form";
+import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
+import auth from "../../firebase.init";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
+	const [checked, setChecked] = useState(false);
+	const [passwordError, setPasswordError] = useState("");
+	const [createUserWithEmailAndPassword, user, loading, error] =
+		useCreateUserWithEmailAndPassword(auth);
+
 	const {
 		register,
 		formState: { errors },
 		handleSubmit,
 	} = useForm();
 
+	const navigate = useNavigate();
+
+	if (user) {
+		navigate("/home");
+	}
+
+	let firebaseError;
+	if (error) {
+		firebaseError = (
+			<p className="text-red-500">
+				<small>{error.message}</small>
+			</p>
+		);
+	}
+
 	const onSubmit = (data, e) => {
 		e.preventDefault();
-		console.log(data);
+		const password = data.password;
+		const confirmPassword = data.confirmPassword;
+
+		if (password !== confirmPassword) {
+			return setPasswordError("Confirm password must be same to password");
+		}
+		setPasswordError("");
+		createUserWithEmailAndPassword(data.email, data.password);
 	};
 
 	return (
@@ -143,11 +173,19 @@ const Register = () => {
 										</span>
 									)}
 								</label>
+								{passwordError && (
+									<p className="label-text-alt mb-2 text-red-500">
+										{passwordError}
+									</p>
+								)}
+								{firebaseError}
 							</div>
 							{/* trams and condition */}
 							<div className="form-control">
 								<label className=" flex items-center cursor-pointer">
 									<input
+										value={checked}
+										onChange={(e) => setChecked(e.target.checked)}
 										type="checkbox"
 										className="checkbox checkbox-sm checkbox-primary mr-2"
 									/>
@@ -157,11 +195,15 @@ const Register = () => {
 								</label>
 							</div>
 
-							<input
-								className="btn btn-primary w-full mt-2"
+							<button
+								disabled={checked ? false : true}
+								className={`btn btn-primary w-full mt-2 ${
+									loading && "loading"
+								}`}
 								type="submit"
-								value="Register"
-							/>
+							>
+								Register
+							</button>
 						</form>
 						<div className="divider">or</div>
 						<SocialLogin></SocialLogin>
