@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
 import SocialLogin from "../Login/SocialLogin";
 import { useForm } from "react-hook-form";
-import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
+import {
+	useCreateUserWithEmailAndPassword,
+	useUpdateProfile,
+} from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -11,6 +14,7 @@ const Register = () => {
 	const [passwordError, setPasswordError] = useState("");
 	const [createUserWithEmailAndPassword, user, loading, error] =
 		useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
+	const [updateProfile, updating, updateError] = useUpdateProfile(auth);
 
 	const {
 		register,
@@ -28,7 +32,7 @@ const Register = () => {
 	}, [navigate, user]);
 
 	let firebaseError;
-	if (error) {
+	if (error || updateError) {
 		firebaseError = (
 			<p className="text-red-500">
 				<small>{error.message}</small>
@@ -36,7 +40,7 @@ const Register = () => {
 		);
 	}
 
-	const onSubmit = (data, e) => {
+	const onSubmit = async (data, e) => {
 		e.preventDefault();
 		const password = data.password;
 		const confirmPassword = data.confirmPassword;
@@ -45,7 +49,10 @@ const Register = () => {
 			return setPasswordError("Confirm password must be same to password");
 		}
 		setPasswordError("");
-		createUserWithEmailAndPassword(data.email, data.password);
+
+		await createUserWithEmailAndPassword(data.email, data.password);
+		await updateProfile({ displayName: data.name });
+
 		e.target.reset();
 	};
 
@@ -205,7 +212,7 @@ const Register = () => {
 							<button
 								disabled={checked ? false : true}
 								className={`btn btn-primary w-full mt-2 ${
-									loading && "loading"
+									(loading || updating) && "loading"
 								}`}
 								type="submit"
 							>

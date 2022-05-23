@@ -9,6 +9,7 @@ import Register from "./Pages/Register/Register";
 import Footer from "./Pages/Shared/Footer/Footer";
 import Header from "./Pages/Shared/Header/Header";
 import PasswordReset from "./Pages/Login/PasswordReset";
+import Dashborad from "./Pages/Dashboard/Dashborad";
 
 function App() {
 	return (
@@ -18,6 +19,7 @@ function App() {
 				<Route path="/" element={<Home />}></Route>
 				<Route path="/home" element={<Home />}></Route>
 				<Route path="/blog" element={<Blog />}></Route>
+				<Route path="/dashboard" element={<Dashborad />}></Route>
 				<Route path="/login" element={<Login />}></Route>
 				<Route path="/register" element={<Register />}></Route>
 				<Route path="/password-reset" element={<PasswordReset />}></Route>
