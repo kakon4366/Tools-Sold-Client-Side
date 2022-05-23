@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
 	const [signInWithEmailAndPassword, user, loading, error] =
@@ -46,7 +46,6 @@ const Login = () => {
 					<div className="w-[400px]">
 						<form
 							onSubmit={handleSubmit(onSubmit)}
-							action=""
 							className="border bg-slate-100 p-5 rounded-md shadow-sm"
 						>
 							<h2 className="text-2xl text-center">Login</h2>
@@ -126,6 +125,19 @@ const Login = () => {
 							>
 								Login
 							</button>
+							<p className="flex justify-between mt-2">
+								<small>
+									Not an account?{" "}
+									<Link className="text-primary" to="/register">
+										Register
+									</Link>
+								</small>
+								<small className="text-secondary">
+									<button onClick={() => navigate("/password-reset")}>
+										Forgot Password
+									</button>
+								</small>
+							</p>
 						</form>
 						<div className="divider">or</div>
 						<SocialLogin></SocialLogin>

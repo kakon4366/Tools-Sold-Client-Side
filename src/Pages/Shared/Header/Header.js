@@ -11,9 +11,11 @@ const Header = () => {
 				<Link to="/blog">Blog</Link>
 			</li>
 			<li>
-				<Link to="/login">Login</Link>
+				<Link className="text-secondary" to="/login">
+					Login
+				</Link>
 			</li>
-			<li>
+			<li className="border bg-secondary text-white rounded-xl">
 				<Link to="/register">Register</Link>
 			</li>
 		</>
@@ -52,7 +54,7 @@ const Header = () => {
 					</Link>
 				</div>
 				<div className="navbar-end hidden lg:flex">
-					<ul className="menu menu-horizontal p-0">{menuItems}</ul>
+					<ul className="menu menu-horizontal p-0 gap-x-3">{menuItems}</ul>
 				</div>
 			</div>
 		</header>
