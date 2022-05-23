@@ -2,12 +2,11 @@ import React from "react";
 import { useQuery } from "react-query";
 import Product from "../../../Components/Product";
 import SectionTitle from "../../../Components/SectionTitle";
-import tool from "../../../Images/tool.jpg";
 import Loading from "../../Shared/Loading/Loading";
 
 const Tools = () => {
 	const { data: products, isLoading } = useQuery("products", () =>
-		fetch("products.json").then((res) => res.json())
+		fetch("http://localhost:5000/tools").then((res) => res.json())
 	);
 
 	if (isLoading) {
