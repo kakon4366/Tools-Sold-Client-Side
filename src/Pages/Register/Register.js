@@ -3,7 +3,7 @@ import SocialLogin from "../Login/SocialLogin";
 import { useForm } from "react-hook-form";
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Register = () => {
 	const [checked, setChecked] = useState(false);
@@ -42,6 +42,7 @@ const Register = () => {
 		}
 		setPasswordError("");
 		createUserWithEmailAndPassword(data.email, data.password);
+		e.target.reset();
 	};
 
 	return (
@@ -204,6 +205,12 @@ const Register = () => {
 							>
 								Register
 							</button>
+							<p className="text-sm mt-2">
+								Already have an account?{" "}
+								<Link className="text-primary" to="/login">
+									Login
+								</Link>
+							</p>
 						</form>
 						<div className="divider">or</div>
 						<SocialLogin></SocialLogin>

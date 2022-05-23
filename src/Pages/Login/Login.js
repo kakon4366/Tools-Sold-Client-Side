@@ -1,17 +1,40 @@
 import React from "react";
 import SocialLogin from "./SocialLogin";
 import { useForm } from "react-hook-form";
+import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import auth from "../../firebase.init";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+	const [signInWithEmailAndPassword, user, loading, error] =
+		useSignInWithEmailAndPassword(auth);
 	const {
 		register,
 		formState: { errors },
 		handleSubmit,
 	} = useForm();
 
+	const navigate = useNavigate();
+
+	if (user) {
+		toast.success("Login Success!");
+		navigate("/home");
+	}
+
+	let firebaseError;
+	if (error) {
+		firebaseError = (
+			<p className="text-red-500">
+				<small>{error.message}</small>
+			</p>
+		);
+	}
+
 	const onSubmit = (data, e) => {
 		e.preventDefault();
-		console.log(data);
+		signInWithEmailAndPassword(data.email, data.password);
+		e.target.reset();
 	};
 
 	return (
@@ -89,13 +112,17 @@ const Login = () => {
 										</span>
 									)}
 								</label>
+								{firebaseError}
 							</div>
 
-							<input
-								className="btn btn-primary w-full mt-2"
+							<button
+								className={`btn btn-primary w-full mt-2 ${
+									loading && "loading"
+								}`}
 								type="submit"
-								value="Login"
-							/>
+							>
+								Login
+							</button>
 						</form>
 						<div className="divider">or</div>
 						<SocialLogin></SocialLogin>
