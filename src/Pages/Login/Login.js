@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import SocialLogin from "./SocialLogin";
 import { useForm } from "react-hook-form";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
@@ -17,10 +17,12 @@ const Login = () => {
 
 	const navigate = useNavigate();
 
-	if (user) {
-		toast.success("Login Success!");
-		navigate("/home");
-	}
+	useEffect(() => {
+		if (user) {
+			toast.success("Login Success!");
+			navigate("/home");
+		}
+	}, [user, navigate]);
 
 	let firebaseError;
 	if (error) {
@@ -96,7 +98,8 @@ const Login = () => {
 										},
 										minLength: {
 											value: 6,
-											message: "Password will be character and more",
+											message:
+												"Password will be 6 character and more",
 										},
 									})}
 								/>

@@ -1,15 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import SocialLogin from "../Login/SocialLogin";
 import { useForm } from "react-hook-form";
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
 import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Register = () => {
 	const [checked, setChecked] = useState(false);
 	const [passwordError, setPasswordError] = useState("");
 	const [createUserWithEmailAndPassword, user, loading, error] =
-		useCreateUserWithEmailAndPassword(auth);
+		useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
 
 	const {
 		register,
@@ -19,9 +20,12 @@ const Register = () => {
 
 	const navigate = useNavigate();
 
-	if (user) {
-		navigate("/home");
-	}
+	useEffect(() => {
+		if (user) {
+			toast.success("Register success!");
+			navigate("/home");
+		}
+	}, [navigate, user]);
 
 	let firebaseError;
 	if (error) {
@@ -126,7 +130,8 @@ const Register = () => {
 										},
 										minLength: {
 											value: 6,
-											message: "Password will be character and more",
+											message:
+												"Password will be 6 character and more",
 										},
 									})}
 								/>
@@ -158,7 +163,8 @@ const Register = () => {
 										},
 										minLength: {
 											value: 6,
-											message: "Password will be character and more",
+											message:
+												"Password will be 6 character and more",
 										},
 									})}
 								/>
