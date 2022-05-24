@@ -14,7 +14,7 @@ const Dashborad = () => {
 					</div>
 				</div>
 				{/* output */}
-				<div className="p-12">
+				<div className="p-12 w-full">
 					<h2 className="text-4xl text-primary font-semibold mb-4">
 						WelCome to your dashboard
 					</h2>
