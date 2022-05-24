@@ -17,7 +17,13 @@ const Payment = () => {
 
 	const { data: product, isLoading } = useQuery(
 		["aymentProduct", productId],
-		() => fetch(url).then((res) => res.json())
+		() =>
+			fetch(url, {
+				method: "GET",
+				headers: {
+					authorization: `Bearer ${localStorage.getItem("access_token")}`,
+				},
+			}).then((res) => res.json())
 	);
 
 	if (isLoading) {
@@ -25,8 +31,6 @@ const Payment = () => {
 	}
 
 	const { productName, price, quantity, img, description } = product;
-
-	console.log(product);
 
 	return (
 		<section className="py-28">
@@ -51,7 +55,7 @@ const Payment = () => {
 							<hr />
 							<h2 className="text-2xl font-semibold mb-4">Payment</h2>
 							<Elements stripe={stripePromise}>
-								<CheckoutForm />
+								<CheckoutForm product={product} />
 							</Elements>
 						</div>
 					</div>

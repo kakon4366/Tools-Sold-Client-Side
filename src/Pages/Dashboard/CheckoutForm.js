@@ -1,10 +1,34 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
-import { async } from "@firebase/util";
 
-const CheckoutForm = () => {
+const CheckoutForm = ({ product }) => {
 	const stripe = useStripe();
 	const elements = useElements();
+	const [cardError, setCardError] = useState("");
+	const [clientSecret, setClientSecret] = useState("");
+
+	const { price, quantity } = product;
+	const totalPrice = price * quantity;
+
+	console.log(totalPrice);
+
+	// useEffect(() => {
+	// 	fetch("http://localhost:5000/create-payment-intent", {
+	// 		method: "POST",
+	// 		headers: {
+	// 			"content-type": "application/json",
+	// 			authorization: `Bearer ${localStorage.getItem("access_token")}`,
+	// 		},
+	// 		body: JSON.stringify({ totalPrice }),
+	// 	})
+	// 		.then((res) => res.json())
+	// 		.then((data) => {
+	// 			console.log(data);
+	// 			if (data?.clientSecret) {
+	// 				setClientSecret(data.clientSecret);
+	// 			}
+	// 		});
+	// }, [totalPrice]);
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
@@ -17,6 +41,17 @@ const CheckoutForm = () => {
 
 		if (card === null) {
 			return;
+		}
+
+		const { error, paymentMethod } = await stripe.createPaymentMethod({
+			type: "card",
+			card,
+		});
+
+		if (error) {
+			setCardError(error.message);
+		} else {
+			setCardError("");
 		}
 	};
 
@@ -38,10 +73,13 @@ const CheckoutForm = () => {
 					},
 				}}
 			/>
+			<p className="text-red-500 mt-2">
+				<small>{cardError && cardError}</small>
+			</p>
 			<button
 				className="btn btn-success w-full mt-4 text-white text-lg"
 				type="submit"
-				disabled={!stripe}
+				disabled={!stripe || !clientSecret}
 			>
 				Pay
 			</button>
