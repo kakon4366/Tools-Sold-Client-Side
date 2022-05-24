@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import auth from "../../firebase.init";
@@ -6,9 +6,7 @@ import avater from "../../Images/avatar.jpg";
 import Loading from "../Shared/Loading/Loading";
 
 const MyProfile = () => {
-	const [user, loading, error] = useAuthState(auth);
-
-	console.log(user);
+	const [user, loading] = useAuthState(auth);
 
 	const imageStorageKey = "6b04d9644890fb0c1445df403e1fbd5a";
 
@@ -77,7 +75,7 @@ const MyProfile = () => {
 					<div className="flex items-center">
 						<img
 							className="w-36 mr-4"
-							src={user.photoURL || avater}
+							src={user?.photoURL || avater}
 							alt=""
 						/>
 						<input

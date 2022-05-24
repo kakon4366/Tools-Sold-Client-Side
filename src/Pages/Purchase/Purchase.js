@@ -2,10 +2,16 @@ import React, { useState } from "react";
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
 import Loading from "../Shared/Loading/Loading";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../../firebase.init";
 
 const Purchase = () => {
 	const [quantity, setQuantity] = useState(0);
+	const [orderMessage, setOrderMessage] = useState("");
 	const [quantityError, setQuantityError] = useState("");
+	const [user, loading] = useAuthState(auth);
+
+	const email = user?.email;
 
 	const { toolId } = useParams();
 
@@ -13,11 +19,11 @@ const Purchase = () => {
 		fetch(`http://localhost:5000/product/${toolId}`).then((res) => res.json())
 	);
 
-	if (isLoading) {
+	if (isLoading || loading) {
 		return <Loading></Loading>;
 	}
 
-	const { name, img, description, price, available } = tool;
+	const { _id, name, img, description, price, available } = tool;
 
 	const handlePurchase = (e) => {
 		e.preventDefault();
@@ -30,29 +36,51 @@ const Purchase = () => {
 		}
 
 		//information form
-		const name = e.target.name.value;
-		const email = e.target.email.value;
+		const userName = e.target.name.value;
 		const addressLine1 = e.target.addressLine1.value;
 		const addressLine2 = e.target.addressLine2.value;
 		const city = e.target.city.value;
 		const postalCode = e.target.postalCode.value;
 		const phoneNumber = e.target.phoneNumber.value;
 
-		const userInfo = {
-			name,
+		const OrderInfo = {
+			productName: name,
+			img,
+			description,
+			price,
+			available,
+			userName,
 			email,
 			addressLine1,
 			addressLine2,
 			city,
 			postalCode,
 			phoneNumber,
+			quantity,
 		};
 
-		if (quantityError) {
-			return;
-		}
+		console.log(quantityError);
 
-		//post user information to database
+		if (quantity > available || quantity < 1000) {
+			return;
+		} else {
+			//post user information to database
+			fetch("http://localhost:5000/order", {
+				method: "POST",
+				headers: {
+					"content-type": "application/json",
+				},
+				body: JSON.stringify(OrderInfo),
+			})
+				.then((res) => res.json())
+				.then((result) => {
+					console.log(result);
+					if (result.insertedId) {
+						setOrderMessage("Order Place Success");
+						e.target.reset();
+					}
+				});
+		}
 	};
 
 	return (
@@ -116,7 +144,9 @@ const Purchase = () => {
 								<div className="mb-4">
 									<label htmlFor="">Name</label>
 									<input
+										required
 										name="name"
+										placeholder="Name"
 										type="text"
 										className="input input-bordered mt-2 w-full"
 									/>
@@ -124,7 +154,9 @@ const Purchase = () => {
 								<div className="mb-4">
 									<label htmlFor="">Email</label>
 									<input
-										name="email"
+										required
+										defaultValue={email}
+										disabled
 										type="email"
 										className="input input-bordered mt-2 w-full"
 									/>
@@ -132,6 +164,7 @@ const Purchase = () => {
 								<div className="mb-4">
 									<label htmlFor="">Address Line 1</label>
 									<input
+										required
 										name="addressLine1"
 										placeholder="Address Line 1"
 										type="text"
@@ -150,6 +183,7 @@ const Purchase = () => {
 								<div className="mb-4">
 									<label htmlFor="">City</label>
 									<input
+										required
 										name="city"
 										placeholder="City"
 										type="text"
@@ -160,6 +194,7 @@ const Purchase = () => {
 									<div className="mb-4 w-1/2 pr-3">
 										<label htmlFor="">State</label>
 										<input
+											required
 											name="state"
 											placeholder="State"
 											type="text"
@@ -169,6 +204,7 @@ const Purchase = () => {
 									<div className="mb-4 w-1/2 pl-3">
 										<label htmlFor="">Postal Code</label>
 										<input
+											required
 											name="postalCode"
 											placeholder="Postal Code"
 											type="text"
@@ -179,6 +215,7 @@ const Purchase = () => {
 								<div className="mb-4">
 									<label htmlFor="">Phone Number</label>
 									<input
+										required
 										name="phoneNumber"
 										placeholder="Phone Number"
 										type="text"
@@ -191,6 +228,26 @@ const Purchase = () => {
 									value="Purchase"
 								/>
 							</form>
+							{orderMessage && (
+								<div className="alert alert-success shadow-lg mt-4">
+									<div>
+										<svg
+											xmlns="http://www.w3.org/2000/svg"
+											className="stroke-current flex-shrink-0 h-6 w-6"
+											fill="none"
+											viewBox="0 0 24 24"
+										>
+											<path
+												strokeLinecap="round"
+												strokeLinejoin="round"
+												strokeWidth="2"
+												d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+											/>
+										</svg>
+										<span>{orderMessage}</span>
+									</div>
+								</div>
+							)}
 						</div>
 					</div>
 				</div>
