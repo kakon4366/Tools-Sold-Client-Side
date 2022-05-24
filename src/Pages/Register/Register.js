@@ -6,7 +6,7 @@ import {
 	useUpdateProfile,
 } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import useToken from "../../Hooks/useToken";
 
@@ -26,13 +26,16 @@ const Register = () => {
 	const [token] = useToken(user);
 
 	const navigate = useNavigate();
+	const location = useLocation();
+
+	let from = location.state?.from?.pathname || "/";
 
 	useEffect(() => {
 		if (token) {
 			toast.success("Register success!");
-			navigate("/home");
+			navigate(from, { replace: true });
 		}
-	}, [navigate, token]);
+	}, [navigate, token, from]);
 
 	let firebaseError;
 	if (error || updateError) {

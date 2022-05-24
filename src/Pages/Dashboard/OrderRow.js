@@ -30,7 +30,7 @@ const OrderRow = ({ product, index, setDeleteModal }) => {
 			<td>
 				<label
 					onClick={setDeleteModal(product)}
-					for="deleteModal"
+					htmlFor="deleteModal"
 					className="btn btn-warning"
 				>
 					Cancle

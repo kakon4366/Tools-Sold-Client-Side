@@ -8,7 +8,7 @@ import OrderRow from "./OrderRow";
 
 const MyOrder = () => {
 	const [deleteModal, setDeleteModal] = useState(null);
-	const [user] = useAuthState(auth);
+	const [user, loading] = useAuthState(auth);
 
 	const email = user?.email;
 
@@ -22,11 +22,9 @@ const MyOrder = () => {
 		)
 	);
 
-	if (isLoading) {
+	if (isLoading || loading) {
 		return <Loading></Loading>;
 	}
-
-	console.log(products);
 
 	return (
 		<div>

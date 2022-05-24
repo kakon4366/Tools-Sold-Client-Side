@@ -6,7 +6,12 @@ import Loading from "../../Shared/Loading/Loading";
 
 const Tools = () => {
 	const { data: products, isLoading } = useQuery("products", () =>
-		fetch("http://localhost:5000/products").then((res) => res.json())
+		fetch("http://localhost:5000/products", {
+			method: "GET",
+			headers: {
+				authorization: `Bearer ${localStorage.getItem("access_token")}`,
+			},
+		}).then((res) => res.json())
 	);
 
 	if (isLoading) {

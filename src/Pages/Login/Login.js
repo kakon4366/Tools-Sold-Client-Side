@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
 import { toast } from "react-toastify";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import useToken from "../../Hooks/useToken";
 
 const Login = () => {
@@ -19,13 +19,16 @@ const Login = () => {
 	const [token] = useToken(user);
 
 	const navigate = useNavigate();
+	const location = useLocation();
+
+	let from = location.state?.from?.pathname || "/";
 
 	useEffect(() => {
 		if (token) {
 			toast.success("Login Success!");
-			navigate("/home");
+			navigate(from, { replace: true });
 		}
-	}, [token, navigate]);
+	}, [token, navigate, from]);
 
 	let firebaseError;
 	if (error) {

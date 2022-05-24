@@ -7,7 +7,7 @@ import Loading from "../Shared/Loading/Loading";
 import CheckoutForm from "./CheckoutForm";
 
 const stripePromise = loadStripe(
-	"pk_test_51L13xmSJyDRTPVy9GKERvIN1lz4K2IXJR0xUqdIQXeN9ZUOKrOx6bWapcDIHhEje2KkpUTqad0aow5YGbOjzKAeN00AooU1WAP"
+	"pk_test_51L2yd3B8DRWv2NRKalSDARWQAs9VqLyFVjVS3mf3ZiQzxrQMsz0FCrzbCYoFj30Z2lnx1u6jDaVahNMbPkWF5AWp00hVS0wMy9"
 );
 
 const Payment = () => {
@@ -32,7 +32,7 @@ const Payment = () => {
 		<section className="py-28">
 			<div className="container mx-auto">
 				<div className="flex justify-center items-center">
-					<div class="card w-96 bg-accent shadow-xl image-full">
+					<div className="card w-96 bg-accent shadow-xl image-full">
 						<figure>
 							<img
 								className="h-[200px] w-full"
@@ -40,8 +40,8 @@ const Payment = () => {
 								alt={productName}
 							/>
 						</figure>
-						<div class="card-body">
-							<h2 class="card-title">{productName}</h2>
+						<div className="card-body">
+							<h2 className="card-title">{productName}</h2>
 							<p>{description}</p>
 							<h4 className="text-lg font-semibold">Price: ${price}</h4>
 							<p className="italic">Quantity: {quantity}</p>

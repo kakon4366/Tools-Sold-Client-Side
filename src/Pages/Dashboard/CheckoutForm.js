@@ -1,11 +1,24 @@
 import React from "react";
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
+import { async } from "@firebase/util";
 
 const CheckoutForm = () => {
 	const stripe = useStripe();
 	const elements = useElements();
 
-	const handleSubmit = () => {};
+	const handleSubmit = async (e) => {
+		e.preventDefault();
+
+		if (!stripe || !elements) {
+			return;
+		}
+
+		const card = elements.getElement(CardElement);
+
+		if (card === null) {
+			return;
+		}
+	};
 
 	return (
 		<form onSubmit={handleSubmit}>
@@ -25,12 +38,6 @@ const CheckoutForm = () => {
 					},
 				}}
 			/>
-			{/* <p className="text-red-500 mt-2">
-				<small>{cardError && cardError}</small>
-			</p>
-			<p className="text-green-500 mt-2">
-				<small>{success && success}</small>
-			</p> */}
 			<button
 				className="btn btn-success w-full mt-4 text-white text-lg"
 				type="submit"
