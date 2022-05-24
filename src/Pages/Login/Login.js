@@ -18,8 +18,6 @@ const Login = () => {
 
 	const [token] = useToken(user);
 
-	console.log(token);
-
 	const navigate = useNavigate();
 
 	useEffect(() => {

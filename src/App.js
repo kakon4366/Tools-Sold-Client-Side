@@ -11,6 +11,9 @@ import Header from "./Pages/Shared/Header/Header";
 import PasswordReset from "./Pages/Login/PasswordReset";
 import Dashborad from "./Pages/Dashboard/Dashborad";
 import Purchase from "./Pages/Purchase/Purchase";
+import MyOrder from "./Pages/Dashboard/MyOrder";
+import MyReview from "./Pages/Dashboard/MyReview";
+import MyProfile from "./Pages/Dashboard/MyProfile";
 
 function App() {
 	return (
@@ -21,7 +24,11 @@ function App() {
 				<Route path="/home" element={<Home />}></Route>
 				<Route path="/blog" element={<Blog />}></Route>
 				<Route path="/purchase/:toolId" element={<Purchase />}></Route>
-				<Route path="/dashboard" element={<Dashborad />}></Route>
+				<Route path="/dashboard" element={<Dashborad />}>
+					<Route index element={<MyOrder />}></Route>
+					<Route path="review" element={<MyReview />}></Route>
+					<Route path="profile" element={<MyProfile />}></Route>
+				</Route>
 				<Route path="/login" element={<Login />}></Route>
 				<Route path="/register" element={<Register />}></Route>
 				<Route path="/password-reset" element={<PasswordReset />}></Route>
