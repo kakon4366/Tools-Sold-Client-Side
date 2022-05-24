@@ -2,7 +2,7 @@
     {
         "_id": 1,
         "name": "Drill Machine",
-        "discription": "This is products tools short description here.",
+        "description": "This is products tools short description here.",
         "price": 9,
         "available" : 10000,
         "img" : "https://i.ibb.co/WD8c8WD/tool.jpg"
@@ -10,7 +10,7 @@
     {
         "_id": 2,
         "name": "Screwdriver",
-        "discription": "This is products tools short description here.",
+        "description": "This is products tools short description here.",
         "price": 8,
         "available" : 10000,
         "img" : "https://i.ibb.co/Zm7W7m1/screwdrivers.jpg"
@@ -18,7 +18,7 @@
     {
         "_id": 3,
         "name": "Glue Gun",
-        "discription": "This is products tools short description here.",
+        "description": "This is products tools short description here.",
         "price": 13,
         "available" : 10000,
         "img" : "https://i.ibb.co/wLy08hT/glue-gun.jpg"
@@ -26,7 +26,7 @@
     {
         "_id": 4,
         "name": "Soldering Iron",
-        "discription": "This is products tools short description here.",
+        "description": "This is products tools short description here.",
         "price": 11,
         "available" : 10000,
         "img" : "https://i.ibb.co/VL24CW9/Soldering-Iron.jpg"
@@ -34,7 +34,7 @@
     {
         "_id": 5,
         "name": "Chisel",
-        "discription": "This is products tools short description here.",
+        "description": "This is products tools short description here.",
         "price": 7,
         "available" : 10000,
         "img" : "https://i.ibb.co/svLwYhb/Chisel.jpg"
@@ -42,7 +42,7 @@
     {
         "_id": 6,
         "name": "Hmmer",
-        "discription": "This is products tools short description here.",
+        "description": "This is products tools short description here.",
         "price": 12,
         "available" : 10000,
         "img" : "https://i.ibb.co/1ZRgPz2/hammer.jpg"

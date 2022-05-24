@@ -3,14 +3,9 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { signOut } from "firebase/auth";
 import { Link } from "react-router-dom";
 import auth from "../../../firebase.init";
-import Loading from "../Loading/Loading";
 
 const Header = () => {
-	const [user, loading] = useAuthState(auth);
-
-	if (loading) {
-		return <Loading></Loading>;
-	}
+	const [user] = useAuthState(auth);
 
 	const menuItems = (
 		<>
