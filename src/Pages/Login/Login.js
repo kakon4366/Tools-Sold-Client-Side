@@ -21,11 +21,11 @@ const Login = () => {
 	const navigate = useNavigate();
 
 	useEffect(() => {
-		if (user) {
+		if (token) {
 			toast.success("Login Success!");
 			navigate("/home");
 		}
-	}, [user, navigate]);
+	}, [token, navigate]);
 
 	let firebaseError;
 	if (error) {
