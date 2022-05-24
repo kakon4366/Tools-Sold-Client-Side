@@ -14,6 +14,7 @@ import Purchase from "./Pages/Purchase/Purchase";
 import MyOrder from "./Pages/Dashboard/MyOrder";
 import MyReview from "./Pages/Dashboard/MyReview";
 import MyProfile from "./Pages/Dashboard/MyProfile";
+import Payment from "./Pages/Dashboard/Payment";
 
 function App() {
 	return (
@@ -29,6 +30,7 @@ function App() {
 					<Route path="review" element={<MyReview />}></Route>
 					<Route path="profile" element={<MyProfile />}></Route>
 				</Route>
+				<Route path="/payment/:productId" element={<Payment />}></Route>
 				<Route path="/login" element={<Login />}></Route>
 				<Route path="/register" element={<Register />}></Route>
 				<Route path="/password-reset" element={<PasswordReset />}></Route>

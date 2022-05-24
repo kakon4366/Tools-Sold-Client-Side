@@ -1,7 +1,10 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const OrderRow = ({ product, index, setDeleteModal }) => {
-	const { available, img, price, productName } = product;
+	const { _id, quantity, img, price, productName } = product;
+
+	const navigate = useNavigate();
 
 	return (
 		<tr>
@@ -10,12 +13,18 @@ const OrderRow = ({ product, index, setDeleteModal }) => {
 				<img className="w-24" src={img} alt="" />
 			</th>
 			<td>{productName}</td>
-			<td>{price}</td>
-			<td>{available}</td>
+			<td>${price}</td>
+			<td>{quantity}</td>
+			<td>${price * quantity}</td>
 			<td>
 				<div className="flex flex-col">
 					<span className="italic">Unpaid</span>
-					<button className="btn btn-sm w-16 btn-success">Pay</button>
+					<button
+						onClick={() => navigate(`/payment/${_id}`)}
+						className="btn btn-sm w-16 btn-success"
+					>
+						Pay
+					</button>
 				</div>
 			</td>
 			<td>
