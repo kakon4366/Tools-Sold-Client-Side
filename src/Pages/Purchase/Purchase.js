@@ -28,6 +28,25 @@ const Purchase = () => {
 		} else {
 			setQuantityError("");
 		}
+
+		//information form
+		const name = e.target.name.value;
+		const email = e.target.email.value;
+		const addressLine1 = e.target.addressLine1.value;
+		const addressLine2 = e.target.addressLine2.value;
+		const city = e.target.city.value;
+		const postalCode = e.target.postalCode.value;
+		const phoneNumber = e.target.phoneNumber.value;
+
+		console.log(
+			name,
+			email,
+			addressLine1,
+			addressLine2,
+			city,
+			postalCode,
+			phoneNumber
+		);
 	};
 
 	return (
@@ -55,21 +74,21 @@ const Purchase = () => {
 											onChange={(e) => setQuantity(e.target.value)}
 											type="text"
 											placeholder="Minimum quantity 1000"
-											class="input input-bordered input-sm w-full max-w-[200px]"
+											className="input input-bordered input-sm w-full max-w-[200px]"
 										/>
 										{quantityError && (
-											<div class="mt-4 alert alert-error shadow-lg">
+											<div className="mt-4 alert alert-error shadow-lg">
 												<div>
 													<svg
 														xmlns="http://www.w3.org/2000/svg"
-														class="stroke-current flex-shrink-0 h-6 w-6"
+														className="stroke-current flex-shrink-0 h-6 w-6"
 														fill="none"
 														viewBox="0 0 24 24"
 													>
 														<path
-															stroke-linecap="round"
-															stroke-linejoin="round"
-															stroke-width="2"
+															strokeLinecap="round"
+															strokeLinejoin="round"
+															strokeWidth="2"
 															d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
 														/>
 													</svg>
@@ -83,6 +102,7 @@ const Purchase = () => {
 						</div>
 					</div>
 
+					{/* Information form */}
 					<div className="w-1/2 bg-purple-300 p-12">
 						<h2 className="text-2xl text-center">Your Infomation</h2>
 						<div>
@@ -90,65 +110,73 @@ const Purchase = () => {
 								<div className="mb-4">
 									<label htmlFor="">Name</label>
 									<input
+										name="name"
 										type="text"
-										class="input input-bordered mt-2 w-full"
+										className="input input-bordered mt-2 w-full"
 									/>
 								</div>
 								<div className="mb-4">
 									<label htmlFor="">Email</label>
 									<input
+										name="email"
 										type="email"
-										class="input input-bordered mt-2 w-full"
+										className="input input-bordered mt-2 w-full"
 									/>
 								</div>
 								<div className="mb-4">
 									<label htmlFor="">Address Line 1</label>
 									<input
+										name="addressLine1"
 										placeholder="Address Line 1"
 										type="text"
-										class="input input-bordered mt-2 w-full"
+										className="input input-bordered mt-2 w-full"
 									/>
 								</div>
 								<div className="mb-4">
 									<label htmlFor="">Address Line 2</label>
 									<input
+										name="addressLine2"
 										placeholder="Address Line 2"
 										type="text"
-										class="input input-bordered mt-2 w-full"
+										className="input input-bordered mt-2 w-full"
 									/>
 								</div>
 								<div className="mb-4">
 									<label htmlFor="">City</label>
 									<input
+										name="city"
 										placeholder="City"
 										type="text"
-										class="input input-bordered mt-2 w-full"
+										className="input input-bordered mt-2 w-full"
 									/>
 								</div>
 								<div className="flex justify-between">
 									<div className="mb-4 w-1/2 pr-3">
 										<label htmlFor="">State</label>
 										<input
+											name="state"
 											placeholder="State"
 											type="text"
-											class="input input-bordered mt-2 w-full"
+											className="input input-bordered mt-2 w-full"
 										/>
 									</div>
 									<div className="mb-4 w-1/2 pl-3">
 										<label htmlFor="">Postal Code</label>
 										<input
+											name="postalCode"
 											placeholder="Postal Code"
 											type="text"
-											class="input input-bordered mt-2 w-full"
+											className="input input-bordered mt-2 w-full"
 										/>
 									</div>
 								</div>
 								<div className="mb-4">
 									<label htmlFor="">Phone Number</label>
 									<input
+										name="phoneNumber"
 										placeholder="Phone Number"
 										type="text"
-										class="input input-bordered mt-2 w-full"
+										className="input input-bordered mt-2 w-full"
 									/>
 								</div>
 								<input
