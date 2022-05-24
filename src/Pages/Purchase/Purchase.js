@@ -38,15 +38,21 @@ const Purchase = () => {
 		const postalCode = e.target.postalCode.value;
 		const phoneNumber = e.target.phoneNumber.value;
 
-		console.log(
+		const userInfo = {
 			name,
 			email,
 			addressLine1,
 			addressLine2,
 			city,
 			postalCode,
-			phoneNumber
-		);
+			phoneNumber,
+		};
+
+		if (quantityError) {
+			return;
+		}
+
+		//post user information to database
 	};
 
 	return (

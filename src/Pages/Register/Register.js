@@ -8,6 +8,7 @@ import {
 import auth from "../../firebase.init";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import useToken from "../../Hooks/useToken";
 
 const Register = () => {
 	const [checked, setChecked] = useState(false);
@@ -22,14 +23,16 @@ const Register = () => {
 		handleSubmit,
 	} = useForm();
 
+	const [token] = useToken(user);
+
 	const navigate = useNavigate();
 
 	useEffect(() => {
-		if (user) {
+		if (token) {
 			toast.success("Register success!");
 			navigate("/home");
 		}
-	}, [navigate, user]);
+	}, [navigate, token]);
 
 	let firebaseError;
 	if (error || updateError) {

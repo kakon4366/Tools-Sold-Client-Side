@@ -5,6 +5,7 @@ import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
 import { toast } from "react-toastify";
 import { Link, useNavigate } from "react-router-dom";
+import useToken from "../../Hooks/useToken";
 
 const Login = () => {
 	const [signInWithEmailAndPassword, user, loading, error] =
@@ -14,6 +15,10 @@ const Login = () => {
 		formState: { errors },
 		handleSubmit,
 	} = useForm();
+
+	const [token] = useToken(user);
+
+	console.log(token);
 
 	const navigate = useNavigate();
 
