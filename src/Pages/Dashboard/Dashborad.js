@@ -20,7 +20,15 @@ const Dashborad = () => {
 							</>
 						)}
 						<Link to="/dashboard">My Profile</Link>
-						{admin && <Link to="/dashboard/make-admin">Make Admin</Link>}
+
+						{admin && (
+							<>
+								<Link to="/dashboard/make-admin">Make Admin</Link>
+								<Link to="/dashboard/manage-all-orders">
+									Manage All Orders
+								</Link>
+							</>
+						)}
 					</div>
 				</div>
 				{/* output */}
