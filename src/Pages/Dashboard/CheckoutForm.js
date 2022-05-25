@@ -10,8 +10,6 @@ const CheckoutForm = ({ product }) => {
 	const { price, quantity } = product;
 	const totalPrice = price * quantity;
 
-	console.log(totalPrice);
-
 	// useEffect(() => {
 	// 	fetch("http://localhost:5000/create-payment-intent", {
 	// 		method: "POST",
@@ -79,7 +77,7 @@ const CheckoutForm = ({ product }) => {
 			<button
 				className="btn btn-success w-full mt-4 text-white text-lg"
 				type="submit"
-				disabled={!stripe || !clientSecret}
+				disabled={!stripe}
 			>
 				Pay
 			</button>
