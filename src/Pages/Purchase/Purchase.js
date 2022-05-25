@@ -16,7 +16,9 @@ const Purchase = () => {
 	const { toolId } = useParams();
 
 	const { data: tool, isLoading } = useQuery(["tool", toolId], () =>
-		fetch(`http://localhost:5000/product/${toolId}`).then((res) => res.json())
+		fetch(`https://mighty-temple-21307.herokuapp.com/product/${toolId}`).then(
+			(res) => res.json()
+		)
 	);
 
 	if (isLoading || loading) {
@@ -65,7 +67,7 @@ const Purchase = () => {
 			return;
 		} else {
 			//post user information to database
-			fetch("http://localhost:5000/order", {
+			fetch("https://mighty-temple-21307.herokuapp.com/order", {
 				method: "POST",
 				headers: {
 					"content-type": "application/json",

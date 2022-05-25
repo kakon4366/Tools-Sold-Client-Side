@@ -47,16 +47,19 @@ const MyProfile = () => {
 						postalCode: data.postalCode,
 					};
 					// update user to database
-					fetch(`http://localhost:5000/profile/${email}`, {
-						method: "PUT",
-						headers: {
-							"content-type": "application/json",
-							authorization: `Bearer ${localStorage.getItem(
-								"access_token"
-							)}`,
-						},
-						body: JSON.stringify(user),
-					})
+					fetch(
+						`https://mighty-temple-21307.herokuapp.com/profile/${email}`,
+						{
+							method: "PUT",
+							headers: {
+								"content-type": "application/json",
+								authorization: `Bearer ${localStorage.getItem(
+									"access_token"
+								)}`,
+							},
+							body: JSON.stringify(user),
+						}
+					)
 						.then((res) => res.json())
 						.then((result) => {
 							if (result.modifiedCount > 0) {

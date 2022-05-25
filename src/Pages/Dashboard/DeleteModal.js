@@ -4,7 +4,7 @@ const DeleteModal = ({ deleteModal, refetch, setDeleteModal }) => {
 	const { _id } = deleteModal;
 
 	const handleDelete = (id) => {
-		const url = `http://localhost:5000/order/${id}`;
+		const url = `https://mighty-temple-21307.herokuapp.com/order/${id}`;
 		fetch(url, {
 			method: "DELETE",
 			headers: {

@@ -29,7 +29,7 @@ const ReviewCard = ({ product, refetch }) => {
 
 		const review = { name, message, rating };
 
-		fetch(`http://localhost:5000/review/${_id}`, {
+		fetch(`https://mighty-temple-21307.herokuapp.com/review/${_id}`, {
 			method: "POST",
 			headers: {
 				"content-type": "application/json",

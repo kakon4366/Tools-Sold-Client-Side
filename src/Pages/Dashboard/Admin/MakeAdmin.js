@@ -11,7 +11,7 @@ const MakeAdmin = () => {
 		isLoading,
 		refetch,
 	} = useQuery("users", () =>
-		fetch("http://localhost:5000/user", {
+		fetch("https://mighty-temple-21307.herokuapp.com/user", {
 			method: "GET",
 			headers: {
 				authorization: `Bearer ${localStorage.getItem("access_token")}`,

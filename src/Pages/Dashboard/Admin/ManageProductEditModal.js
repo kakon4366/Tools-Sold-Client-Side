@@ -5,7 +5,7 @@ const ManageProductEditModal = ({ editProduct, setEditProduct, refetch }) => {
 	const { _id } = editProduct;
 
 	useEffect(() => {
-		const url = `http://localhost:5000/edit-product/${_id}`;
+		const url = `https://mighty-temple-21307.herokuapp.com/edit-product/${_id}`;
 		fetch(url, {
 			method: "GET",
 			headers: {
@@ -35,7 +35,7 @@ const ManageProductEditModal = ({ editProduct, setEditProduct, refetch }) => {
 		};
 
 		console.log(updatedProduct);
-		fetch(`http://localhost:5000/product/${editedId}`, {
+		fetch(`https://mighty-temple-21307.herokuapp.com/product/${editedId}`, {
 			method: "PUT",
 			headers: {
 				"content-type": "application/json",

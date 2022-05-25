@@ -7,7 +7,7 @@ const useProducts = () => {
 		refetch,
 		error,
 	} = useQuery("products", () =>
-		fetch("http://localhost:5000/products", {
+		fetch("https://mighty-temple-21307.herokuapp.com/products", {
 			method: "GET",
 			headers: {
 				authorization: `Bearer ${localStorage.getItem("access_token")}`,

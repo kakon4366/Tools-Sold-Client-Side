@@ -17,9 +17,9 @@ const MyOrder = () => {
 		isLoading,
 		refetch,
 	} = useQuery("orderedProducts", () =>
-		fetch(`http://localhost:5000/ordered-product/${email}`).then((res) =>
-			res.json()
-		)
+		fetch(
+			`https://mighty-temple-21307.herokuapp.com/ordered-product/${email}`
+		).then((res) => res.json())
 	);
 
 	if (isLoading || loading) {

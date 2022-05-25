@@ -6,7 +6,7 @@ const MakeAdminRow = ({ user, index, refetch, setDeleteUser }) => {
 	const { image, email, role } = user;
 
 	const makeAdminHandler = () => {
-		fetch(`http://localhost:5000/user/admin/${email}`, {
+		fetch(`https://mighty-temple-21307.herokuapp.com/user/admin/${email}`, {
 			method: "PUT",
 			headers: {
 				authorization: `Bearer ${localStorage.getItem("access_token")}`,

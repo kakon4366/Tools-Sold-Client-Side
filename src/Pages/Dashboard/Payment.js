@@ -13,7 +13,7 @@ const stripePromise = loadStripe(
 const Payment = () => {
 	const { productId } = useParams();
 
-	const url = `http://localhost:5000/payment-product/${productId}`;
+	const url = `https://mighty-temple-21307.herokuapp.com/payment-product/${productId}`;
 
 	const { data: product, isLoading } = useQuery(
 		["aymentProduct", productId],

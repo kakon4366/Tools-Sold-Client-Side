@@ -9,7 +9,7 @@ const ManageProductsDeleteModal = ({
 	const { _id } = deleteProduct;
 
 	const handleProductDelete = (id) => {
-		fetch(`http://localhost:5000/product/${id}`, {
+		fetch(`https://mighty-temple-21307.herokuapp.com/product/${id}`, {
 			method: "DELETE",
 			headers: {
 				authorization: `Bearer ${localStorage.getItem("access_token")}`,
