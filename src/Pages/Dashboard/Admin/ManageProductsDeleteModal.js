@@ -30,25 +30,28 @@ const ManageProductsDeleteModal = ({
 			<input
 				type="checkbox"
 				id="mamage-products-delete-modal"
-				class="modal-toggle"
+				className="modal-toggle"
 			/>
-			<div class="modal">
-				<div class="modal-box">
-					<h3 class="font-bold text-lg">
+			<div className="modal">
+				<div className="modal-box">
+					<h3 className="font-bold text-lg">
 						Congratulations random Interner user!
 					</h3>
-					<p class="py-4">
+					<p className="py-4">
 						You've been selected for a chance to get one year of
 						subscription to use Wikipedia for free!
 					</p>
-					<div class="modal-action">
+					<div className="modal-action">
 						<button
 							onClick={() => handleProductDelete(_id)}
 							className="btn btn-sm btn-secondary"
 						>
 							Delete
 						</button>
-						<label for="mamage-products-delete-modal" class="btn btn-sm">
+						<label
+							htmlFor="mamage-products-delete-modal"
+							className="btn btn-sm"
+						>
 							Cancle
 						</label>
 					</div>

@@ -1,6 +1,11 @@
 import React from "react";
 
-const ManageProductsRow = ({ product, index, setDeleteProduct }) => {
+const ManageProductsRow = ({
+	product,
+	index,
+	setDeleteProduct,
+	setEditProduct,
+}) => {
 	const { name, img, available, price } = product;
 	return (
 		<tr>
@@ -17,10 +22,16 @@ const ManageProductsRow = ({ product, index, setDeleteProduct }) => {
 			<td>{available}</td>
 			<td>
 				<div>
-					<button className="btn btn-sm btn-warning mr-2">Edit</button>
+					<label
+						onClick={() => setEditProduct(product)}
+						htmlFor="manage-product-edit-modal"
+						className="btn btn-sm btn-warning mr-2"
+					>
+						Edit
+					</label>
 					<label
 						onClick={() => setDeleteProduct(product)}
-						for="mamage-products-delete-modal"
+						htmlFor="mamage-products-delete-modal"
 						className="btn btn-sm btn-secondary"
 					>
 						Delete

@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import useProducts from "../../../Hooks/useProducts";
 import Loading from "../../Shared/Loading/Loading";
+import ManageProductEditModal from "./ManageProductEditModal";
 import ManageProductsDeleteModal from "./ManageProductsDeleteModal";
 import ManageProductsRow from "./ManageProductsRow";
 
 const ManageProducts = () => {
 	const [products, isLoading, refetch] = useProducts();
 	const [deleteProduct, setDeleteProduct] = useState(null);
+	const [editProduct, setEditProduct] = useState(null);
 
 	if (isLoading) {
 		return <Loading></Loading>;
@@ -34,6 +36,7 @@ const ManageProducts = () => {
 								key={product._id}
 								index={index}
 								setDeleteProduct={setDeleteProduct}
+								setEditProduct={setEditProduct}
 							></ManageProductsRow>
 						))}
 					</tbody>
@@ -45,6 +48,13 @@ const ManageProducts = () => {
 					setDeleteProduct={setDeleteProduct}
 					refetch={refetch}
 				></ManageProductsDeleteModal>
+			)}
+			{editProduct && (
+				<ManageProductEditModal
+					editProduct={editProduct}
+					setEditProduct={setEditProduct}
+					refetch={refetch}
+				></ManageProductEditModal>
 			)}
 		</div>
 	);
