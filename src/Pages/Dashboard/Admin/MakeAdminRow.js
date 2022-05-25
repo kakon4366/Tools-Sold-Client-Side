@@ -2,7 +2,7 @@ import React from "react";
 import { toast } from "react-toastify";
 import avatar from "../../../Images/avatar.jpg";
 
-const MakeAdminRow = ({ user, index, refetch }) => {
+const MakeAdminRow = ({ user, index, refetch, setDeleteUser }) => {
 	const { image, email, role } = user;
 
 	const makeAdminHandler = () => {
@@ -53,7 +53,13 @@ const MakeAdminRow = ({ user, index, refetch }) => {
 				</span>
 			</td>
 			<td>
-				<button className="btn btn-warning btn-sm">Delete</button>
+				<label
+					onClick={() => setDeleteUser(user)}
+					htmlFor="user-delete-modal"
+					className="btn btn-warning btn-sm"
+				>
+					Delete
+				</label>
 			</td>
 		</tr>
 	);

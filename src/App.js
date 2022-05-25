@@ -43,9 +43,9 @@ function App() {
 						</RequireAuth>
 					}
 				>
-					<Route index element={<MyOrder />}></Route>
+					<Route path="myorder" element={<MyOrder />}></Route>
 					<Route path="review" element={<MyReview />}></Route>
-					<Route path="profile" element={<MyProfile />}></Route>
+					<Route index element={<MyProfile />}></Route>
 					{/* admin */}
 					<Route
 						path="make-admin"

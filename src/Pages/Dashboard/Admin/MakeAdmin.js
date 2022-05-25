@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { useQuery } from "react-query";
 import Loading from "../../Shared/Loading/Loading";
 import MakeAdminRow from "./MakeAdminRow";
+import UserDeleteModal from "./UserDeleteModal";
 
 const MakeAdmin = () => {
+	const [deleteUser, setDeleteUser] = useState(null);
 	const {
 		data: users,
 		isLoading,
@@ -35,17 +37,25 @@ const MakeAdmin = () => {
 						</tr>
 					</thead>
 					<tbody>
-						{users.map((user, index) => (
+						{users?.map((user, index) => (
 							<MakeAdminRow
 								index={index}
 								user={user}
 								key={user._id}
 								refetch={refetch}
+								setDeleteUser={setDeleteUser}
 							></MakeAdminRow>
 						))}
 					</tbody>
 				</table>
 			</div>
+			{deleteUser && (
+				<UserDeleteModal
+					deleteUser={deleteUser}
+					setDeleteUser={setDeleteUser}
+					refetch={refetch}
+				></UserDeleteModal>
+			)}
 		</div>
 	);
 };

@@ -15,11 +15,11 @@ const Dashborad = () => {
 					<div className="flex flex-col gap-y-4 mt-12">
 						{admin || (
 							<>
-								<Link to="/dashboard">My Orders</Link>
+								<Link to="/dashboard/myorder">My Orders</Link>
 								<Link to="/dashboard/review">Add A Review</Link>
 							</>
 						)}
-						<Link to="/dashboard/profile">My Profile</Link>
+						<Link to="/dashboard">My Profile</Link>
 						{admin && <Link to="/dashboard/make-admin">Make Admin</Link>}
 					</div>
 				</div>

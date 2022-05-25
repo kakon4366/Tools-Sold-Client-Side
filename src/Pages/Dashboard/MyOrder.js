@@ -44,7 +44,7 @@ const MyOrder = () => {
 						</tr>
 					</thead>
 					<tbody>
-						{products.map((product, index) => (
+						{products?.map((product, index) => (
 							<OrderRow
 								key={product._id}
 								product={product}
