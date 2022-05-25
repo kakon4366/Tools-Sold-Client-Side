@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import useProducts from "../../../Hooks/useProducts";
 import Loading from "../../Shared/Loading/Loading";
+import ManageProductsDeleteModal from "./ManageProductsDeleteModal";
 import ManageProductsRow from "./ManageProductsRow";
 
 const ManageProducts = () => {
-	const [products, isLoading] = useProducts();
+	const [products, isLoading, refetch] = useProducts();
+	const [deleteProduct, setDeleteProduct] = useState(null);
 
 	if (isLoading) {
 		return <Loading></Loading>;
@@ -31,11 +33,19 @@ const ManageProducts = () => {
 								product={product}
 								key={product._id}
 								index={index}
+								setDeleteProduct={setDeleteProduct}
 							></ManageProductsRow>
 						))}
 					</tbody>
 				</table>
 			</div>
+			{deleteProduct && (
+				<ManageProductsDeleteModal
+					deleteProduct={deleteProduct}
+					setDeleteProduct={setDeleteProduct}
+					refetch={refetch}
+				></ManageProductsDeleteModal>
+			)}
 		</div>
 	);
 };
