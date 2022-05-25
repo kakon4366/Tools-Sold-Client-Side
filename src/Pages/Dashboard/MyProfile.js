@@ -1,6 +1,7 @@
 import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 import auth from "../../firebase.init";
 import avater from "../../Images/avatar.jpg";
 import Loading from "../Shared/Loading/Loading";
@@ -57,11 +58,16 @@ const MyProfile = () => {
 						body: JSON.stringify(user),
 					})
 						.then((res) => res.json())
-						.then((result) => console.log("profile result", result));
+						.then((result) => {
+							if (result.modifiedCount > 0) {
+								toast.success("Profile Save Success!");
+								e.target.reset();
+							} else {
+								toast.error("Please any Changes!");
+							}
+						});
 				}
 			});
-
-		console.log(data);
 	};
 
 	if (loading) {
