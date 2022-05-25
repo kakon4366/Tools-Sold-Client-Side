@@ -1,18 +1,11 @@
 import React from "react";
-import { useQuery } from "react-query";
 import Product from "../../../Components/Product";
 import SectionTitle from "../../../Components/SectionTitle";
+import useProducts from "../../../Hooks/useProducts";
 import Loading from "../../Shared/Loading/Loading";
 
 const Tools = () => {
-	const { data: products, isLoading } = useQuery("products", () =>
-		fetch("http://localhost:5000/products", {
-			method: "GET",
-			headers: {
-				authorization: `Bearer ${localStorage.getItem("access_token")}`,
-			},
-		}).then((res) => res.json())
-	);
+	const [products, isLoading] = useProducts();
 
 	if (isLoading) {
 		return <Loading></Loading>;

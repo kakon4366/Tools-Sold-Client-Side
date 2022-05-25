@@ -14,9 +14,9 @@ const ManageAllOrdersRow = ({ product, index }) => {
 				</div>
 			</td>
 			<td>{productName}</td>
-			<td>{price}</td>
+			<td>${price}</td>
 			<td>{quantity}</td>
-			<td>{price * quantity}</td>
+			<td>${price * quantity}</td>
 			<td>
 				<span className="italic">Unpaid</span>
 			</td>
