@@ -1,16 +1,26 @@
 import React from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, Outlet } from "react-router-dom";
+import auth from "../../firebase.init";
+import useAdmin from "../../Hooks/useAdmin";
 
 const Dashborad = () => {
+	const [user] = useAuthState(auth);
+	const [admin] = useAdmin(user);
 	return (
 		<section>
 			<div className="flex">
 				{/* side bar */}
 				<div className="bg-accent w-[250px] text-lg p-4 text-white h-screen ">
 					<div className="flex flex-col gap-y-4 mt-12">
-						<Link to="/dashboard">My Orders</Link>
-						<Link to="/dashboard/review">Add A Review</Link>
+						{admin || (
+							<>
+								<Link to="/dashboard">My Orders</Link>
+								<Link to="/dashboard/review">Add A Review</Link>
+							</>
+						)}
 						<Link to="/dashboard/profile">My Profile</Link>
+						{admin && <Link to="/dashboard/make-admin">Make Admin</Link>}
 					</div>
 				</div>
 				{/* output */}
