@@ -13,11 +13,16 @@ const Header = () => {
 				<Link to="/home">Home</Link>
 			</li>
 			<li>
-				<Link to="/blog">Blog</Link>
+				<Link to="/protfolio">Protfolio</Link>
 			</li>
 			<li>
-				<Link to="/dashboard">Dashboard</Link>
+				<Link to="/blog">Blog</Link>
 			</li>
+			{user && (
+				<li>
+					<Link to="/dashboard">Dashboard</Link>
+				</li>
+			)}
 			{user ? (
 				<button
 					onClick={() => {
