@@ -1,7 +1,12 @@
 import React from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
+import auth from "../firebase.init";
+import useAdmin from "../Hooks/useAdmin";
 
 const Product = ({ product }) => {
+	const [user] = useAuthState(auth);
+	const [admin] = useAdmin(user);
 	const { _id, name, img, description, available, price } = product;
 
 	const navigate = useNavigate();
@@ -21,12 +26,21 @@ const Product = ({ product }) => {
 					Available: {available}
 				</p>
 				<div className="card-actions justify-end">
-					<button
-						onClick={() => navigate(`/purchase/${_id}`)}
-						className="btn btn-primary"
-					>
-						Order
-					</button>
+					{admin ? (
+						<button
+							onClick={() => navigate("/dashboard/manage-products")}
+							className="btn btn-secondary"
+						>
+							Manage
+						</button>
+					) : (
+						<button
+							onClick={() => navigate(`/purchase/${_id}`)}
+							className="btn btn-primary"
+						>
+							Order
+						</button>
+					)}
 				</div>
 			</div>
 		</div>

@@ -20,6 +20,7 @@ import RequireAdmin from "./Pages/Login/RequireAdmin";
 import MakeAdmin from "./Pages/Dashboard/Admin/MakeAdmin";
 import ManageAllOrders from "./Pages/Dashboard/Admin/ManageAllOrders";
 import ManageProducts from "./Pages/Dashboard/Admin/ManageProducts";
+import AddAProduct from "./Pages/Dashboard/Admin/AddAProduct";
 
 function App() {
 	return (
@@ -70,6 +71,14 @@ function App() {
 						element={
 							<RequireAdmin>
 								<ManageProducts />
+							</RequireAdmin>
+						}
+					></Route>
+					<Route
+						path="add-product"
+						element={
+							<RequireAdmin>
+								<AddAProduct />
 							</RequireAdmin>
 						}
 					></Route>
