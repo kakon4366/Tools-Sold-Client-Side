@@ -47,12 +47,12 @@ const ReviewCard = ({ product, refetch }) => {
 	};
 
 	return (
-		<div class="card card-compact w-96 bg-base-100 shadow-xl">
+		<div className="card card-compact w-96 bg-base-100 shadow-xl">
 			<figure>
 				<img src={img} alt={productName} />
 			</figure>
-			<div class="card-body">
-				<h2 class="card-title">{productName}</h2>
+			<div className="card-body">
+				<h2 className="card-title">{productName}</h2>
 				<p>{description}</p>
 				<h3>Price ${price}</h3>
 				<p className="text-secondary">
@@ -70,20 +70,20 @@ const ReviewCard = ({ product, refetch }) => {
 						cols="30"
 						rows="5"
 					></textarea>
-					<div class="rating">
+					<div className="rating">
 						<input
 							value="1"
 							onChange={(e) => setRating(e.target.value)}
 							type="radio"
 							name="rating-2"
-							class="mask mask-star-2 bg-orange-400"
+							className="mask mask-star-2 bg-orange-400"
 						/>
 						<input
 							value="2"
 							onChange={(e) => setRating(e.target.value)}
 							type="radio"
 							name="rating-2"
-							class="mask mask-star-2 bg-orange-400"
+							className="mask mask-star-2 bg-orange-400"
 							checked
 						/>
 						<input
@@ -91,31 +91,31 @@ const ReviewCard = ({ product, refetch }) => {
 							onChange={(e) => setRating(e.target.value)}
 							type="radio"
 							name="rating-2"
-							class="mask mask-star-2 bg-orange-400"
+							className="mask mask-star-2 bg-orange-400"
 						/>
 						<input
 							value="4"
 							onChange={(e) => setRating(e.target.value)}
 							type="radio"
 							name="rating-2"
-							class="mask mask-star-2 bg-orange-400"
+							className="mask mask-star-2 bg-orange-400"
 						/>
 						<input
 							value="5"
 							onChange={(e) => setRating(e.target.value)}
 							type="radio"
 							name="rating-2"
-							class="mask mask-star-2 bg-orange-400"
+							className="mask mask-star-2 bg-orange-400"
 						/>
 					</div>
-					<div class="card-actions justify-end">
+					<div className="card-actions justify-end">
 						<span className="text-secondary">
 							{ratingCount && "Your ar already review this product"}
 						</span>
 						<button
 							disabled={ratingCount ? true : false}
 							type="submit"
-							class="btn btn-primary"
+							className="btn btn-primary"
 						>
 							Review
 						</button>

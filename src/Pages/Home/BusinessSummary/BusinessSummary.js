@@ -7,12 +7,18 @@ import { useQuery } from "react-query";
 const BusinessSummary = () => {
 	const [products, isLoading] = useProducts();
 
-	const { data: reviews, isLoading: reviewLoading } = useQuery("reviews", () =>
-		fetch("http://localhost:5000/all-review").then((res) => res.json())
+	const { data: reviews, isLoading: reviewLoading } = useQuery(
+		"allReviews",
+		() =>
+			fetch("https://mighty-temple-21307.herokuapp.com/all-review").then(
+				(res) => res.json()
+			)
 	);
 
 	const { data: orders, isLoading: orderLoading } = useQuery("allOrders", () =>
-		fetch("http://localhost:5000/all-order").then((res) => res.json())
+		fetch("https://mighty-temple-21307.herokuapp.com/all-order").then((res) =>
+			res.json()
+		)
 	);
 
 	if (isLoading || reviewLoading || orderLoading) {
@@ -33,22 +39,24 @@ const BusinessSummary = () => {
 								Business Summary
 							</h1>
 							<div className="mx-auto">
-								<div class="grid grid-cols-1 md:grid-cols-3 rounded-lg bg-white text-black shadow">
-									<div class="stat place-items-center">
-										<div class="stat-title">Products</div>
-										<div class="stat-value">{products.length}</div>
-									</div>
-
-									<div class="stat place-items-center">
-										<div class="stat-title">Reviews</div>
-										<div class="stat-value text-secondary">
-											{reviews.length}
+								<div className="grid grid-cols-1 md:grid-cols-3 rounded-lg bg-white text-black shadow">
+									<div className="stat place-items-center">
+										<div className="stat-title">Products</div>
+										<div className="stat-value">
+											{products?.length}
 										</div>
 									</div>
 
-									<div class="stat place-items-center">
-										<div class="stat-title">Total Orders</div>
-										<div class="stat-value">{orders.length}</div>
+									<div className="stat place-items-center">
+										<div className="stat-title">Reviews</div>
+										<div className="stat-value text-secondary">
+											{reviews?.length}
+										</div>
+									</div>
+
+									<div className="stat place-items-center">
+										<div className="stat-title">Total Orders</div>
+										<div className="stat-value">{orders?.length}</div>
 									</div>
 								</div>
 							</div>

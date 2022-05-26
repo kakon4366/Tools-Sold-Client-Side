@@ -38,7 +38,7 @@ const AddAProduct = () => {
 						available: data.available,
 					};
 
-					fetch("http://localhost:5000/new-product", {
+					fetch("https://mighty-temple-21307.herokuapp.com/new-product", {
 						method: "POST",
 						headers: {
 							"content-type": "application/json",
