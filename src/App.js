@@ -23,6 +23,7 @@ import ManageProducts from "./Pages/Dashboard/Admin/ManageProducts";
 import AddAProduct from "./Pages/Dashboard/Admin/AddAProduct";
 import MyProtfolio from "./Pages/MyPortfolio/MyProtfolio";
 import NotFound404 from "./Pages/Shared/NotFound404/NotFound404";
+import AllTools from "./Pages/AllTools/AllTools";
 
 function App() {
 	return (
@@ -32,6 +33,7 @@ function App() {
 				<Route path="/" element={<Home />}></Route>
 				<Route path="/home" element={<Home />}></Route>
 				<Route path="/blog" element={<Blog />}></Route>
+				<Route path="/all-tools" element={<AllTools />}></Route>
 				<Route path="/protfolio" element={<MyProtfolio />}></Route>
 				<Route
 					path="/purchase/:toolId"

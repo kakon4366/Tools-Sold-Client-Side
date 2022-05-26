@@ -2,15 +2,15 @@
     {
         "_id": 1,
         "name": "Drill Machine",
-        "description": "This is products tools short description here.",
+        "description": "Drilling machine, a powerful tool that can drill holes in wood, plastic and any hard objects.",
         "price": 9,
-        "available" : 10000,
+        "available" : 54000,
         "img" : "https://i.ibb.co/WD8c8WD/tool.jpg"
     },
     {
         "_id": 2,
         "name": "Screwdriver",
-        "description": "This is products tools short description here.",
+        "description": "A screwdriver is a tool that can easily separate any type of flat nut.",
         "price": 8,
         "available" : 10000,
         "img" : "https://i.ibb.co/Zm7W7m1/screwdrivers.jpg"
@@ -18,7 +18,7 @@
     {
         "_id": 3,
         "name": "Glue Gun",
-        "description": "This is products tools short description here.",
+        "description": "A simple shaped electric gun used to melt and apply glue sticks.",
         "price": 13,
         "available" : 10000,
         "img" : "https://i.ibb.co/wLy08hT/glue-gun.jpg"
@@ -26,7 +26,7 @@
     {
         "_id": 4,
         "name": "Soldering Iron",
-        "description": "This is products tools short description here.",
+        "description": "Soldering iron is a tool that provides heat for soldering.",
         "price": 11,
         "available" : 10000,
         "img" : "https://i.ibb.co/VL24CW9/Soldering-Iron.jpg"
@@ -34,15 +34,38 @@
     {
         "_id": 5,
         "name": "Chisel",
-        "description": "This is products tools short description here.",
+        "description": "A chisel is the sharp edge of a blade used to shape wood or other materials.",
         "price": 7,
         "available" : 10000,
         "img" : "https://i.ibb.co/svLwYhb/Chisel.jpg"
     },
     {
         "_id": 6,
-        "name": "Hmmer",
-        "description": "This is products tools short description here.",
+        "name": "Hammer",
+        "description": "A hand tool consisting of a solid head set crosswise on a handle and used for pounding.",
+        "price": 12,
+        "available" : 10000,
+        "img" : "https://i.ibb.co/1ZRgPz2/hammer.jpg"
+    }, 
+    {
+        "_id": 7,
+        "name": "Spade ",
+        "description": "A tool with a sharp-edged, typically rectangular, metal blade and a long handle.",
+        "price": 12,
+        "available" : 10000,
+        "img" : "https://i.ibb.co/1ZRgPz2/hammer.jpg"
+    },{
+        "_id": 8,
+        "name": "Paint Roller",
+        "description": "A paint application tool used for painting large flat surfaces rapidly and efficiently.",
+        "price": 7,
+        "available" : 10000,
+        "img" : "https://i.ibb.co/1ZRgPz2/hammer.jpg"
+    },
+    {
+        "_id": 9,
+        "name": "Electric Saw ",
+        "description": "It has a large, toothed blade that can cut through wood with a back-and-forth sawing motion.",
         "price": 12,
         "available" : 10000,
         "img" : "https://i.ibb.co/1ZRgPz2/hammer.jpg"
