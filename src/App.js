@@ -22,6 +22,7 @@ import ManageAllOrders from "./Pages/Dashboard/Admin/ManageAllOrders";
 import ManageProducts from "./Pages/Dashboard/Admin/ManageProducts";
 import AddAProduct from "./Pages/Dashboard/Admin/AddAProduct";
 import MyProtfolio from "./Pages/MyPortfolio/MyProtfolio";
+import NotFound404 from "./Pages/Shared/NotFound404/NotFound404";
 
 function App() {
 	return (
@@ -96,6 +97,7 @@ function App() {
 				<Route path="/login" element={<Login />}></Route>
 				<Route path="/register" element={<Register />}></Route>
 				<Route path="/password-reset" element={<PasswordReset />}></Route>
+				<Route path="*" element={<NotFound404 />}></Route>
 			</Routes>
 			<Footer></Footer>
 			<ToastContainer></ToastContainer>
