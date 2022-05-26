@@ -25,7 +25,7 @@ const Purchase = () => {
 		return <Loading></Loading>;
 	}
 
-	const { _id, name, img, description, price, available } = tool;
+	const { name, img, description, price, available } = tool;
 
 	const handlePurchase = (e) => {
 		e.preventDefault();

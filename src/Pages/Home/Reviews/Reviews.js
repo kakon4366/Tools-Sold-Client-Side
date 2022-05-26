@@ -20,7 +20,7 @@ const Reviews = () => {
 			<div className="container mx-auto">
 				<SectionTitle>Reviews</SectionTitle>
 				<div className="grid grid-col-1 md:grid-cols-2 lg:grid-cols-3 mt-16 gap-y-20 gap-x-8">
-					{reviews?.map((review) => (
+					{reviews?.slice(0, 6).map((review) => (
 						<ReviewCard review={review} key={review._id}></ReviewCard>
 					))}
 				</div>
