@@ -1,12 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import linkedin from "../../../Images/Linkedin.png";
+import logo from "../../../Images/toolsLogo.png";
 
 const Footer = () => {
 	return (
 		<footer className="footer p-10 bg-neutral text-neutral-content">
 			<div>
-				<h2 className="text-3xl">Tool Sold</h2>
+				<Link to="/">
+					<img className="h-12" src={logo} alt="" />
+				</Link>
 				<p>
 					You can buy all kinds of tools on our web site. But you can buy
 					the tools for your business.

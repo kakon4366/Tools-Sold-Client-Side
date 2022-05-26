@@ -3,6 +3,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { signOut } from "firebase/auth";
 import { Link } from "react-router-dom";
 import auth from "../../../firebase.init";
+import logo from "../../../Images/toolsLogo.png";
 
 const Header = () => {
 	const [user] = useAuthState(auth);
@@ -76,8 +77,11 @@ const Header = () => {
 								{menuItems}
 							</ul>
 						</div>
-						<Link to="/" className="btn btn-ghost normal-case text-xl">
-							Tools Sold
+						<Link
+							to="/"
+							className="btn-sm sm:btn-md btn  btn-ghost normal-case"
+						>
+							<img className="h-4 sm:h-6" src={logo} alt="" />
 						</Link>
 					</div>
 					<div className="navbar-end hidden lg:flex">
