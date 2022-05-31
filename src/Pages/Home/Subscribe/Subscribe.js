@@ -8,7 +8,7 @@ const Subscribe = () => {
 					<input
 						type="email"
 						placeholder="Your Email Address"
-						class="input input-bordered w-full md:max-w-sm"
+						className="input input-bordered w-full md:max-w-sm"
 					/>
 					<button className="btn mt-4 md:mt-0 btn-accent">
 						Subscribe

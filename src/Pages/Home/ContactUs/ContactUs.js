@@ -7,32 +7,32 @@ const ContactUs = () => {
 			<div className="container mx-auto px-2">
 				<SectionTitle>Contact Us</SectionTitle>
 				<form action="" className="w-full md:w-3/4 lg:w-1/2 mx-auto">
-					<div class="form-control w-full">
-						<label class="label">
-							<span class="label-text">Full Name</span>
+					<div className="form-control w-full">
+						<label className="label">
+							<span className="label-text">Full Name</span>
 						</label>
 						<input
 							type="text"
 							placeholder="Full Name"
-							class="input input-bordered "
+							className="input input-bordered "
 						/>
 					</div>
-					<div class="form-control w-full">
-						<label class="label">
-							<span class="label-text">Email Address</span>
+					<div className="form-control w-full">
+						<label className="label">
+							<span className="label-text">Email Address</span>
 						</label>
 						<input
 							type="email"
 							placeholder="Email Address"
-							class="input input-bordered "
+							className="input input-bordered "
 						/>
 					</div>
-					<div class="form-control w-full">
-						<label class="label">
-							<span class="label-text">Email Address</span>
+					<div className="form-control w-full">
+						<label className="label">
+							<span className="label-text">Email Address</span>
 						</label>
 						<textarea
-							class=" border p-3 "
+							className=" border p-3 "
 							placeholder="Your Message"
 							name=""
 							id=""
