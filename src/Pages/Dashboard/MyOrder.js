@@ -5,10 +5,12 @@ import auth from "../../firebase.init";
 import Loading from "../Shared/Loading/Loading";
 import DeleteModal from "./DeleteModal";
 import OrderRow from "./OrderRow";
+import TransitionModal from "./TransitionModal";
 
 const MyOrder = () => {
 	const [deleteModal, setDeleteModal] = useState(null);
 	const [user, loading] = useAuthState(auth);
+	const [transitionModal, setTransitionModal] = useState(null);
 
 	const email = user?.email;
 
@@ -50,6 +52,7 @@ const MyOrder = () => {
 								product={product}
 								index={index}
 								setDeleteModal={setDeleteModal}
+								setTransitionModal={setTransitionModal}
 							></OrderRow>
 						))}
 					</tbody>
@@ -61,6 +64,13 @@ const MyOrder = () => {
 					refetch={refetch}
 					setDeleteModal={setDeleteModal}
 				></DeleteModal>
+			)}
+
+			{transitionModal && (
+				<TransitionModal
+					transitionModal={transitionModal}
+					setTransitionModal={setTransitionModal}
+				></TransitionModal>
 			)}
 		</div>
 	);
