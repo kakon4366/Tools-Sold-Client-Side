@@ -1,7 +1,9 @@
 import React from "react";
 
 const ManageAllOrdersRow = ({ product, index }) => {
-	const { quantity, img, price, productName } = product;
+	const { _id, quantity, img, paid, price, productName } = product;
+
+	const handleShipped = (id) => {};
 
 	return (
 		<tr>
@@ -18,10 +20,20 @@ const ManageAllOrdersRow = ({ product, index }) => {
 			<td>{quantity}</td>
 			<td>${price * quantity}</td>
 			<td>
-				<span className="italic">Unpaid</span>
+				{paid ? (
+					<span className="italic">Paid</span>
+				) : (
+					<span className="italic">Unpaid</span>
+				)}
 			</td>
 			<td>
-				<button className="btn btn-sm">unshiped</button>
+				<button
+					onClick={() => handleShipped(_id)}
+					disabled={paid ? false : true}
+					className="btn btn-sm"
+				>
+					unshiped
+				</button>
 			</td>
 		</tr>
 	);
