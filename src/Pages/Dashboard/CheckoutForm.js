@@ -18,7 +18,7 @@ const CheckoutForm = ({ product }) => {
 	const totalPrice = price * quantity;
 
 	useEffect(() => {
-		fetch("http://localhost:5000/create-payment-intent", {
+		fetch("https://mighty-temple-21307.herokuapp.com/create-payment-intent", {
 			method: "POST",
 			headers: {
 				"content-type": "application/json",
@@ -93,7 +93,7 @@ const CheckoutForm = ({ product }) => {
 				transactionId: paymentIntent.id,
 			};
 
-			fetch(`http://localhost:5000/pay-product/${_id}`, {
+			fetch(`https://mighty-temple-21307.herokuapp.com/pay-product/${_id}`, {
 				method: "PATCH",
 				headers: {
 					"content-type": "application/json",

@@ -9,12 +9,15 @@ const ManageAllOrdersRow = ({ product, index, refetch }) => {
 			return toast.error("Product an already shiped!");
 		}
 
-		fetch(`http://localhost:5000/shipping-product/${id}`, {
-			method: "PATCH",
-			headers: {
-				authorization: `Bearer ${localStorage.getItem("access_token")}`,
-			},
-		})
+		fetch(
+			`https://mighty-temple-21307.herokuapp.com/shipping-product/${id}`,
+			{
+				method: "PATCH",
+				headers: {
+					authorization: `Bearer ${localStorage.getItem("access_token")}`,
+				},
+			}
+		)
 			.then((res) => res.json())
 			.then((data) => {
 				if (data.modifiedCount > 0) {
