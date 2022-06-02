@@ -1,9 +1,28 @@
 import React from "react";
+import { toast } from "react-toastify";
 
-const ManageAllOrdersRow = ({ product, index }) => {
-	const { _id, quantity, img, paid, price, productName } = product;
+const ManageAllOrdersRow = ({ product, index, refetch }) => {
+	const { _id, quantity, shipping, img, paid, price, productName } = product;
 
-	const handleShipped = (id) => {};
+	const handleShipped = (id) => {
+		if (shipping) {
+			return toast.error("Product an already shiped!");
+		}
+
+		fetch(`http://localhost:5000/shipping-product/${id}`, {
+			method: "PATCH",
+			headers: {
+				authorization: `Bearer ${localStorage.getItem("access_token")}`,
+			},
+		})
+			.then((res) => res.json())
+			.then((data) => {
+				if (data.modifiedCount > 0) {
+					toast.success("Your product is Shiped!");
+					refetch();
+				}
+			});
+	};
 
 	return (
 		<tr>
@@ -32,7 +51,7 @@ const ManageAllOrdersRow = ({ product, index }) => {
 					disabled={paid ? false : true}
 					className="btn btn-sm"
 				>
-					unshiped
+					{shipping ? "Shiped" : "unshiped"}
 				</button>
 			</td>
 		</tr>

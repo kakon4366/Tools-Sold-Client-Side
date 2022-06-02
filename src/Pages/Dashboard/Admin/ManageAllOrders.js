@@ -4,7 +4,11 @@ import Loading from "../../Shared/Loading/Loading";
 import ManageAllOrdersRow from "./ManageAllOrdersRow";
 
 const ManageAllOrders = () => {
-	const { data: products, isLoading } = useQuery("orderedProducts", () =>
+	const {
+		data: products,
+		isLoading,
+		refetch,
+	} = useQuery("orderedProducts", () =>
 		fetch(`https://mighty-temple-21307.herokuapp.com/all-order`).then((res) =>
 			res.json()
 		)
@@ -37,6 +41,7 @@ const ManageAllOrders = () => {
 								product={product}
 								key={product._id}
 								index={index}
+								refetch={refetch}
 							></ManageAllOrdersRow>
 						))}
 					</tbody>
