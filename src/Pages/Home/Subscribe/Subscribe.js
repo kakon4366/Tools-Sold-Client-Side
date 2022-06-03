@@ -5,6 +5,16 @@ const Subscribe = () => {
 		e.preventDefault();
 		const email = e.target.email.value;
 		console.log(email);
+
+		fetch("http://localhost:5000/subscribe", {
+			method: "POST",
+			headers: {
+				"content-type": "application/json",
+			},
+			body: JSON.stringify({ email }),
+		})
+			.then((res) => res.json())
+			.then((data) => console.log(data));
 	};
 
 	return (
@@ -13,7 +23,6 @@ const Subscribe = () => {
 				<div>
 					<form
 						onSubmit={handleSubscribe}
-						action=""
 						className="text-center md:flex justify-center items-center"
 					>
 						<input
