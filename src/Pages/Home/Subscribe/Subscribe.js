@@ -1,4 +1,5 @@
 import React from "react";
+import { toast } from "react-toastify";
 
 const Subscribe = () => {
 	const handleSubscribe = (e) => {
@@ -11,10 +12,17 @@ const Subscribe = () => {
 			headers: {
 				"content-type": "application/json",
 			},
-			body: JSON.stringify({ email }),
+			body: JSON.stringify({ email: email }),
 		})
 			.then((res) => res.json())
-			.then((data) => console.log(data));
+			.then((data) => {
+				console.log(data);
+				if (data.success) {
+					toast.success(data.message);
+				} else {
+					toast.error(data.message);
+				}
+			});
 	};
 
 	return (
